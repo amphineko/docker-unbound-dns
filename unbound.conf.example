@@ -1,0 +1,46 @@
+server:
+    access-control: 0.0.0.0/0 allow
+    do-daemonize: no
+    do-ip6: no
+    interface-automatic: yes
+    num-threads: 1
+    outgoing-num-tcp: 128
+    pidfile: ""
+    prefer-ip4: yes
+    prefer-ip6: no
+    statistics-interval: 600
+    
+    hide-identity: yes
+    hide-version: yes
+
+    log-queries: no
+    log-replies: no
+    log-servfail: yes
+    logfile: ""
+
+    prefetch-key: yes
+    prefetch: yes
+
+    auto-trust-anchor-file: "/var/lib/unbound/root.key"
+    root-hints: "/usr/share/dns/root.hints"
+
+    key-cache-size: 16m
+    key-cache-slabs: 1
+    msg-cache-size: 32m
+    msg-cache-slabs: 1
+    neg-cache-size: 32m
+    rrset-cache-size: 16m
+    rrset-cache-slabs: 1
+    
+    edns-tcp-keepalive: yes
+    minimal-responses: no
+    qname-minimisation: yes
+    qname-minimisation-strict: no
+    use-caps-for-id: yes
+
+    serve-expired: yes
+    serve-expired-client-timeout: 500
+    serve-expired-reply-ttl: 10
+
+    insecure-lan-zones: yes
+    unblock-lan-zones: yes
