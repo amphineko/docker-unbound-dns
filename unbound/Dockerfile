@@ -7,8 +7,8 @@ RUN apt-get update \
 
 WORKDIR /usr/src/unbound
 
-ARG UNBOUND_URL=https://nlnetlabs.nl/downloads/unbound/unbound-1.12.0.tar.gz
-ARG UNBOUND_SHA512=90d99bc65e9ba62e50a7809dbf1e98889d0fc9fd50cf3cc99b726c67bcaeda0c2bc176d09f84771adb9796833b595591462f96e949d6969a47d6898d8fae3479
+ARG UNBOUND_URL=https://nlnetlabs.nl/downloads/unbound/unbound-1.13.1.tar.gz
+ARG UNBOUND_SHA512=f4d26dca28dbcc33a5e65a55147fa01077c331292e88b6a87798cb6c3d4edb0515015d131fd893c92b74d22d9998a640f0adce404e6192d61ebe69a6a599287c
 
 RUN curl -fsSL --retry 3 "${UNBOUND_URL}" -o unbound.tar.gz \
 	&& echo "${UNBOUND_SHA512}  unbound.tar.gz" | sha512sum -c - \
