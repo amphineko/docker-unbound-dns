@@ -17,7 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: build
-        run: docker build . --file unbound/Dockerfile --tag $IMAGE_NAME
+        run: |
+          cd unbound
+          docker build . --file Dockerfile --tag $IMAGE_NAME
       - name: login
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: push
