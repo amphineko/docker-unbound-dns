@@ -1,5 +1,6 @@
 server:
     access-control: 0.0.0.0/0 allow
+    chroot: ""
     do-daemonize: no
     do-ip6: no
     interface-automatic: yes
@@ -9,7 +10,7 @@ server:
     prefer-ip4: yes
     prefer-ip6: no
     statistics-interval: 600
-    
+
     hide-identity: yes
     hide-version: yes
 
@@ -22,7 +23,7 @@ server:
     prefetch: yes
 
     auto-trust-anchor-file: "/var/lib/unbound/root.key"
-    root-hints: "/usr/share/dns/root.hints"
+    root-hints: "/var/lib/unbound/named.root"
 
     key-cache-size: 16m
     key-cache-slabs: 1
@@ -31,7 +32,7 @@ server:
     neg-cache-size: 32m
     rrset-cache-size: 16m
     rrset-cache-slabs: 1
-    
+
     edns-tcp-keepalive: yes
     minimal-responses: no
     qname-minimisation: yes
