@@ -33,4 +33,4 @@ jobs:
         with:
           context: "./unbound"
           push: true
-          tags: "${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
+          tags: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
