@@ -4,8 +4,8 @@ RUN apk add --no-cache curl
 
 WORKDIR /usr/src/unbound
 
-ARG UNBOUND_URL=https://www.nlnetlabs.nl/downloads/unbound/unbound-1.13.1.tar.gz
-ARG UNBOUND_SHA256=8504d97b8fc5bd897345c95d116e0ee0ddf8c8ff99590ab2b4bd13278c9f50b8
+ARG UNBOUND_URL=https://www.nlnetlabs.nl/downloads/unbound/unbound-1.14.0.tar.gz
+ARG UNBOUND_SHA256=6ef91cbf02d5299eab39328c0857393de7b4885a2fe7233ddfe3c124ff5a89c8
 
 RUN curl -fsSL --retry 3 "${UNBOUND_URL}" -o unbound.tar.gz \
 	&& echo "${UNBOUND_SHA256}  unbound.tar.gz" | sha256sum -c - \
