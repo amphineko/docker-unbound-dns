@@ -1,11 +1,11 @@
-FROM alpine:3.13 AS build
+FROM alpine:3.16 AS build
 
 RUN apk add --no-cache curl
 
 WORKDIR /usr/src/unbound
 
-ARG UNBOUND_URL=https://www.nlnetlabs.nl/downloads/unbound/unbound-1.14.0.tar.gz
-ARG UNBOUND_SHA256=6ef91cbf02d5299eab39328c0857393de7b4885a2fe7233ddfe3c124ff5a89c8
+ARG UNBOUND_URL=https://nlnetlabs.nl/downloads/unbound/unbound-1.17.0.tar.gz
+ARG UNBOUND_SHA256=dcbc95d7891d9f910c66e4edc9f1f2fde4dea2eec18e3af9f75aed44a02f1341
 
 RUN curl -fsSL --retry 3 "${UNBOUND_URL}" -o unbound.tar.gz \
 	&& echo "${UNBOUND_SHA256}  unbound.tar.gz" | sha256sum -c - \
@@ -31,11 +31,9 @@ RUN ./configure \
 	--with-libhiredis \
 	--with-rootkey-file=/var/lib/unbound/root.key
 
-ARG BUILD_CONCURRENCY=1
+RUN make -j $(nproc --all) && make install DESTDIR=/build
 
-RUN make -j ${BUILD_CONCURRENCY} && make install DESTDIR=/build
-
-FROM alpine:3.13
+FROM alpine:3.16
 
 COPY --from=build /build /
 
